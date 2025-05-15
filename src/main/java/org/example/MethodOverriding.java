@@ -1,13 +1,20 @@
 package org.example;
 
 class Animal{
+    Animal(){
+        System.out.println("Animal class constructor");
+    }
     public void makeSound(){
         System.out.println("Animal make sound");
     }
 }
 class Dog extends Animal{
+    Dog(){
+        super(); // call parent class constructor
+    }
     public void makeSound(){
         System.out.println("Dog Barks");
+        super.makeSound(); // call parent class method
     }
 }
 public class MethodOverriding {
