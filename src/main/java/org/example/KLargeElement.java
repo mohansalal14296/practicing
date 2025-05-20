@@ -10,8 +10,39 @@ public class KLargeElement {
         int k = 4;
         int n = arr.length;
        // kLargestOrdinaryApproach(arr, k);
-        kLargestPriorityQueue(arr, k);
+       kLargestPriorityQueue(arr, k);
+      //  System.out.println(findKthLargest(arr, k));
+        //kSmallestPriorityQueue(arr, k);
 //        System.out.println("K'th smallest element is " + kLargestOrdinaryApproach(arr, k));
+    }
+
+    public static int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        for(int i=0;i<nums.length;i++){
+            pq.add(nums[i]);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+        System.out.println(pq);
+        return pq.peek();
+    }
+
+    private static void kSmallestPriorityQueue(int[] arr, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        for(int i=0;i<k;i++){
+            pq.add(arr[i]);
+        }
+        System.out.println(pq);
+        for(int i=k;i<arr.length;i++){
+            if(pq.peek() > arr[i]){
+                pq.poll();
+                pq.add(arr[i]);
+            }
+        }
+        while (!pq.isEmpty()) {
+            System.out.print(pq.poll() + " ");
+        }
     }
 
     private static void kLargestPriorityQueue(int[] arr, int k) {
@@ -21,13 +52,12 @@ public class KLargeElement {
         }
         for(int i=k;i<arr.length;i++) {
             if (pQueue.peek() < arr[i]) {
-                System.out.println(pQueue);
+               // System.out.println(pQueue);
                 pQueue.poll();
                 pQueue.add(arr[i]);
             }
         }
         System.out.println(pQueue);
-        System.out.println((int)(7/2));
     }
 
     private static void kLargestOrdinaryApproach(int[] arr, int k) {
