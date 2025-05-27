@@ -26,5 +26,4 @@ public class MountainArray {
             }
         }
         System.out.println(pQueue);
-        System.out.println((int)(7/2));
     }}

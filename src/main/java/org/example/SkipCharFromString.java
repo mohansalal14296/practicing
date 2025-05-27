@@ -12,7 +12,7 @@ public class SkipCharFromString {
         }
         char firstChar = mohan.charAt(0);
         if(a.charAt(0) != firstChar){
-            ss=ss.append(firstChar);
+            ss.append(firstChar);
         }
         return skip(mohan.substring(1),a,ss);
     }
